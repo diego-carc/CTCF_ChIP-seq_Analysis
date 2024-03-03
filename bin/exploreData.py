@@ -14,7 +14,8 @@ args = parser.parse_args()
 # Explore Data
 data = pd.read_csv(args.filePath, sep='\t', header=None)
 print(f"Basic information from:\t{args.filePath}")
-print(f"Number of peaks:\t{data.shape[0]}")
-print(f"Sum of peak lengths:\t{sum(lenghts := data[2] - data[1])}") # Columns 1 and 2 correspond to sequence start and end
+print(f"number of peaks:\t{data.shape[0]}")
+print(f"sum of peak lengths:\t{sum(lenghts := data[2] - data[1])}") # Columns 1 and 2 correspond to sequence start and end
 for key,value in lenghts.describe().to_dict().items():
+    if key == "count":continue
     print(f"{key} peak length:\t{value}")
