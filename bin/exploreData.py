@@ -17,4 +17,4 @@ print(f"Basic information from:\t{args.filePath}")
 print(f"Number of peaks:\t{data.shape[0]}")
 print(f"Sum of peak lengths:\t{sum(lenghts := data[2] - data[1])}") # Columns 1 and 2 correspond to sequence start and end
 for key,value in lenghts.describe().to_dict().items():
-    print(f"{key}:\t{value}")
+    print(f"{key} peak length:\t{value}")
