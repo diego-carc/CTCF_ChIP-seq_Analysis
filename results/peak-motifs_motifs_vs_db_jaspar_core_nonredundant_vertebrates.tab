@@ -1,0 +1,178 @@
+; compare-matrices  -v 1 -mode matches -format1 transfac -file1 $RSAT/public_html/tmp/www-data/2024/03/21/peak-motifs.2024-03-21.023305_2024-03-21.023305_6q7FSY/results/discovered_motifs/peak-motifs_motifs_discovered.tf -format2 tf -file2 $RSAT/public_html/motif_databases/JASPAR/Jaspar_2020/nonredundant/JASPAR2020_CORE_vertebrates_non-redundant_pfms.tf -mode matches -strand DR -uth offset_rank 1 -lth w 5 -lth Wr 0.3 -lth cor 0.7 -lth Ncor 0.4 -return matrix_name,matrix_id,cor,Ncor,width,strand,offset,alignments_1ton -sort Ncor -quick -o $RSAT/public_html/tmp/www-data/2024/03/21/peak-motifs.2024-03-21.023305_2024-03-21.023305_6q7FSY/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_nonredundant_vertebrates.tab
+; Program version       	1.118
+; Quick mode 
+; Input files
+;	file2 	/opt/rsat-tools/rsat/public_html/motif_databases/JASPAR/Jaspar_2020/nonredundant/JASPAR2020_CORE_vertebrates_non-redundant_pfms.tf
+;	file1 	/opt/rsat-tools/rsat/public_html/tmp/www-data/2024/03/21/peak-motifs.2024-03-21.023305_2024-03-21.023305_6q7FSY/results/discovered_motifs/peak-motifs_motifs_discovered.tf
+; Output files
+;	alignments_1ton_html	/opt/rsat-tools/rsat/public_html/tmp/www-data/2024/03/21/peak-motifs.2024-03-21.023305_2024-03-21.023305_6q7FSY/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_nonredundant_vertebrates_alignments_1ton.html
+;	html_index   	/opt/rsat-tools/rsat/public_html/tmp/www-data/2024/03/21/peak-motifs.2024-03-21.023305_2024-03-21.023305_6q7FSY/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_nonredundant_vertebrates_index.html
+;	prefix       	/opt/rsat-tools/rsat/public_html/tmp/www-data/2024/03/21/peak-motifs.2024-03-21.023305_2024-03-21.023305_6q7FSY/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_nonredundant_vertebrates
+;	match_table_txt	/opt/rsat-tools/rsat/public_html/tmp/www-data/2024/03/21/peak-motifs.2024-03-21.023305_2024-03-21.023305_6q7FSY/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_nonredundant_vertebrates.tab
+;	match_table_html	/opt/rsat-tools/rsat/public_html/tmp/www-data/2024/03/21/peak-motifs.2024-03-21.023305_2024-03-21.023305_6q7FSY/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_nonredundant_vertebrates.html
+;	alignments_1ton	/opt/rsat-tools/rsat/public_html/tmp/www-data/2024/03/21/peak-motifs.2024-03-21.023305_2024-03-21.023305_6q7FSY/results/discovered_vs_db/peak-motifs_motifs_vs_db_jaspar_core_nonredundant_vertebrates_alignments_1ton.tab
+; Matrices
+;	file1	20 matrices	/opt/rsat-tools/rsat/public_html/tmp/www-data/2024/03/21/peak-motifs.2024-03-21.023305_2024-03-21.023305_6q7FSY/results/discovered_motifs/peak-motifs_motifs_discovered.tf
+;		file1	1	13	4171
+;		file1	2	17	2547
+;		file1	3	10	2277
+;		file1	4	11	3679
+;		file1	5	10	1946
+;		file1	6	24	2314
+;		file1	7	20	819
+;		file1	8	24	368
+;		file1	9	24	175
+;		file1	10	19	2127
+;		file1	11	14	4517
+;		...	10 more matrices
+;	file2	746 matrices	/opt/rsat-tools/rsat/public_html/motif_databases/JASPAR/Jaspar_2020/nonredundant/JASPAR2020_CORE_vertebrates_non-redundant_pfms.tf
+;		file2		1		6		24
+;		file2		2		17		100
+;		file2		3		10		9897
+;		file2		4		17		101
+;		file2		5		17		3851
+;		file2		6		10		25318
+;		file2		7		6		27
+;		file2		8		11		1001
+;		file2		9		14		101
+;		file2		10		6		20
+;		file2		11		8		104
+;		...	736 more matrices
+; Column content
+;	1	id1          	Identifier of the first matrix
+;	2	id2          	Identifier of the second matrix
+;	3	name1        	Name of the first matrix
+;	4	name2        	Name of the second matrix
+;	5	cor          	Pearson coefficient of correlation between frequency matrices
+;	6	Ncor         	Normalized correlation. Ncor = cor * Wr
+;	7	w1           	Width of the first matrix
+;	8	w2           	Width of the second matrix
+;	9	w            	Alignment length (number of overlapping columns between matrix 1 and matrix 2, as a function of the offset)
+;	10	W            	Total alignment length (overlapping + non-overlapping columns). W = w1 + w2 - w
+;	11	Wr           	Relative alignment length (overlap divided by the total alignemnt length). Wr = w/W
+;	12	wr1          	Alignment length relative to the width of the first matrix. wr1 = w/w1
+;	13	wr2          	Alignment length relative to the width of the second matrix. wr2 = w/w2
+;	14	strand       	"strand", i.e. orientation of matrix 2 relative to matrix 1 (D=direct;  R=reverse)
+;	15	offset       	shift of the second matrix relative to the first matrix (negative:left; positive: right)
+#id1	id2	name1	name2	cor	Ncor	w1	w2	w	W	Wr	wr1	wr2	strand	offset
+oligos_6nt_mkv4_m1	MA1102.2	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	CTCFL	0.974	0.899	13	12	12	13	0.9231	0.9231	1.0000	D	0
+oligos_7nt_mkv5_m3	MA0039.4	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	KLF4	0.939	0.861	11	12	11	12	0.9167	1.0000	0.9167	D	-1
+oligos_6nt_mkv4_m2	MA0139.1	oligos_6nt_mkv4_m2oligos_6nt_mkv4_m2	CTCF	0.952	0.852	17	19	17	19	0.8947	1.0000	0.8947	D	-1
+oligos_7nt_mkv5_m3	MA1513.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	KLF15	0.831	0.831	11	11	11	11	1.0000	1.0000	1.0000	D	0
+oligos_7nt_mkv5_m1	MA1102.2	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	CTCFL	0.964	0.826	14	12	12	14	0.8571	0.8571	1.0000	R	1
+oligos_7nt_mkv5_m3	MA0599.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	KLF5	0.872	0.793	11	10	10	11	0.9091	0.9091	1.0000	D	0
+oligos_7nt_mkv5_m3	MA1511.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	KLF10	0.768	0.768	11	11	11	11	1.0000	1.0000	1.0000	D	0
+oligos_7nt_mkv5_m4	MA1102.2	oligos_7nt_mkv5_m4oligos_7nt_mkv5_m4	CTCFL	0.900	0.762	12	12	11	13	0.8462	0.9167	0.9167	D	-1
+positions_6nt_m1	MA0139.1	positions_6nt_m1positions_6nt_m1	CTCF	0.951	0.753	24	19	19	24	0.7917	0.7917	1.0000	D	3
+positions_7nt_m5	MA0139.1	positions_7nt_m5positions_7nt_m5	CTCF	0.938	0.743	24	19	19	24	0.7917	0.7917	1.0000	D	3
+oligos_7nt_mkv5_m3	MA0741.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	KLF16	0.740	0.740	11	11	11	11	1.0000	1.0000	1.0000	D	0
+oligos_7nt_mkv5_m2	MA1102.2	oligos_7nt_mkv5_m2oligos_7nt_mkv5_m2	CTCFL	0.841	0.721	14	12	12	14	0.8571	0.8571	1.0000	D	1
+oligos_6nt_mkv4_m4	MA0103.3	oligos_6nt_mkv4_m4oligos_6nt_mkv4_m4	ZEB1	0.716	0.716	11	11	11	11	1.0000	1.0000	1.0000	D	0
+positions_7nt_m2	MA0139.1	positions_7nt_m2positions_7nt_m2	CTCF	0.901	0.713	24	19	19	24	0.7917	0.7917	1.0000	D	0
+oligos_7nt_mkv5_m3	MA1512.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	KLF11	0.705	0.705	11	11	11	11	1.0000	1.0000	1.0000	D	0
+oligos_7nt_mkv5_m3	MA1653.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	ZNF148	0.769	0.705	11	12	11	12	0.9167	1.0000	0.9167	D	-1
+positions_7nt_m4	MA0139.1	positions_7nt_m4positions_7nt_m4	CTCF	0.956	0.688	24	19	18	25	0.7200	0.7500	0.9474	R	6
+oligos_7nt_mkv5_m3	MA1515.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	KLF2	0.800	0.666	11	11	10	12	0.8333	0.9091	0.9091	D	-1
+oligos_7nt_mkv5_m3	MA0493.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	Klf1	0.796	0.664	11	11	10	12	0.8333	0.9091	0.9091	D	-1
+oligos_7nt_mkv5_m2	MA0139.1	oligos_7nt_mkv5_m2oligos_7nt_mkv5_m2	CTCF	0.891	0.656	14	19	14	19	0.7368	1.0000	0.7368	D	-4
+oligos_7nt_mkv5_m3	MA1564.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	SP9	0.715	0.656	11	12	11	12	0.9167	1.0000	0.9167	D	0
+oligos_6nt_mkv4_m1	MA0155.1	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	INSM1	0.834	0.656	13	12	11	14	0.7857	0.8462	0.9167	D	-1
+oligos_7nt_mkv5_m1	MA0155.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	INSM1	0.745	0.639	14	12	12	14	0.8571	0.8571	1.0000	R	2
+oligos_7nt_mkv5_m1	MA0139.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	CTCF	0.865	0.638	14	19	14	19	0.7368	1.0000	0.7368	R	-1
+oligos_6nt_mkv4_m1	MA0139.1	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	CTCF	0.909	0.622	13	19	13	19	0.6842	1.0000	0.6842	D	-5
+oligos_7nt_mkv5_m3	MA1522.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	MAZ	0.746	0.622	11	11	10	12	0.8333	0.9091	0.9091	D	-1
+oligos_7nt_mkv5_m3	MA0162.4	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	EGR1	0.792	0.622	11	14	11	14	0.7857	1.0000	0.7857	D	-3
+oligos_7nt_mkv5_m3	MA0753.2	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	ZNF740	0.730	0.617	11	13	11	13	0.8462	1.0000	0.8462	D	-1
+oligos_7nt_mkv5_m3	MA0472.2	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	EGR2	0.725	0.604	11	11	10	12	0.8333	0.9091	0.9091	D	-1
+oligos_7nt_mkv5_m3	MA1517.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	KLF6	0.721	0.601	11	11	10	12	0.8333	0.9091	0.9091	D	-1
+oligos_7nt_mkv5_m3	MA0471.2	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	E2F6	0.702	0.594	11	13	11	13	0.8462	1.0000	0.8462	R	-2
+oligos_6nt_mkv4_m5	MA0632.2	oligos_6nt_mkv4_m5oligos_6nt_mkv4_m5	TCFL5	0.717	0.586	10	10	9	11	0.8182	0.9000	0.9000	D	-1
+oligos_7nt_mkv5_m4	MA0139.1	oligos_7nt_mkv5_m4oligos_7nt_mkv5_m4	CTCF	0.925	0.584	12	19	12	19	0.6316	1.0000	0.6316	D	-6
+oligos_6nt_mkv4_m1	MA1548.1	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	PLAGL2	0.739	0.569	13	10	10	13	0.7692	0.7692	1.0000	R	3
+oligos_6nt_mkv4_m2	MA1102.2	oligos_6nt_mkv4_m2oligos_6nt_mkv4_m2	CTCFL	0.799	0.564	17	12	12	17	0.7059	0.7059	1.0000	D	4
+oligos_6nt_mkv4_m3	MA1615.1	oligos_6nt_mkv4_m3oligos_6nt_mkv4_m3	Plagl1	0.725	0.558	10	13	10	13	0.7692	1.0000	0.7692	R	0
+oligos_7nt_mkv5_m4	MA0155.1	oligos_7nt_mkv5_m4oligos_7nt_mkv5_m4	INSM1	0.778	0.556	12	12	10	14	0.7143	0.8333	0.8333	D	-2
+oligos_7nt_mkv5_m5	MA0117.2	oligos_7nt_mkv5_m5oligos_7nt_mkv5_m5	Mafb	0.716	0.550	11	12	10	13	0.7692	0.9091	0.8333	R	1
+oligos_7nt_mkv5_m3	MA1601.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	ZNF75D	0.732	0.549	11	10	9	12	0.7500	0.8182	0.9000	R	-1
+oligos_7nt_mkv5_m5	MA0842.2	oligos_7nt_mkv5_m5oligos_7nt_mkv5_m5	NRL	0.755	0.539	11	13	10	14	0.7143	0.9091	0.7692	R	1
+positions_7nt_m1	MA0139.1	positions_7nt_m1positions_7nt_m1	CTCF	0.820	0.536	24	19	17	26	0.6538	0.7083	0.8947	D	-2
+oligos_7nt_mkv5_m1	MA0696.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	ZIC1	0.707	0.530	14	14	12	16	0.7500	0.8571	0.8571	D	2
+oligos_7nt_mkv5_m3	MA1491.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	GLI3	0.721	0.529	11	15	11	15	0.7333	1.0000	0.7333	D	0
+oligos_7nt_mkv5_m3	MA0734.2	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	GLI2	0.717	0.526	11	15	11	15	0.7333	1.0000	0.7333	D	0
+oligos_7nt_mkv5_m3	MA0733.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	EGR4	0.761	0.523	11	16	11	16	0.6875	1.0000	0.6875	D	-3
+oligos_6nt_mkv4_m3	MA0502.2	oligos_6nt_mkv4_m3oligos_6nt_mkv4_m3	NFYB	0.754	0.522	10	12	9	13	0.6923	0.9000	0.7500	D	-3
+oligos_6nt_mkv4_m1	MA0740.1	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	KLF14	0.758	0.521	13	14	11	16	0.6875	0.8462	0.7857	R	2
+oligos_7nt_mkv5_m3	MA1514.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	KLF17	0.708	0.519	11	15	11	15	0.7333	1.0000	0.7333	D	-3
+oligos_7nt_mkv5_m1	MA1548.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	PLAGL2	0.725	0.518	14	10	10	14	0.7143	0.7143	1.0000	D	0
+positions_7nt_m3	MA0139.1	positions_7nt_m3positions_7nt_m3	CTCF	0.868	0.515	24	19	16	27	0.5926	0.6667	0.8421	D	-3
+oligos_7nt_mkv5_m3	MA1107.2	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	KLF9	0.747	0.514	11	16	11	16	0.6875	1.0000	0.6875	D	-2
+oligos_7nt_mkv5_m3	MA0516.2	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	SP2	0.791	0.512	11	17	11	17	0.6471	1.0000	0.6471	D	-4
+oligos_6nt_mkv4_m1	MA0685.1	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	SP4	0.766	0.511	13	17	12	18	0.6667	0.9231	0.7059	R	1
+oligos_6nt_mkv4_m1	MA1522.1	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	MAZ	0.714	0.510	13	11	10	14	0.7143	0.7692	0.9091	R	-1
+oligos_7nt_mkv5_m4	MA0103.3	oligos_7nt_mkv5_m4oligos_7nt_mkv5_m4	ZEB1	0.793	0.510	12	11	9	14	0.6429	0.7500	0.8182	R	-2
+oligos_7nt_mkv5_m1	MA0751.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	ZIC4	0.721	0.509	14	15	12	17	0.7059	0.8571	0.8000	D	2
+oligos_7nt_mkv5_m4	MA0820.1	oligos_7nt_mkv5_m4oligos_7nt_mkv5_m4	FIGLA	0.734	0.508	12	10	9	13	0.6923	0.7500	0.9000	R	-1
+oligos_6nt_mkv4_m1	MA1564.1	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	SP9	0.755	0.503	13	12	10	15	0.6667	0.7692	0.8333	R	3
+oligos_7nt_mkv5_m1	MA0697.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	ZIC3	0.712	0.503	14	15	12	17	0.7059	0.8571	0.8000	D	2
+oligos_7nt_mkv5_m4	MA1558.1	oligos_7nt_mkv5_m4oligos_7nt_mkv5_m4	SNAI1	0.725	0.502	12	10	9	13	0.6923	0.7500	0.9000	D	-1
+oligos_7nt_mkv5_m5	MA1628.1	oligos_7nt_mkv5_m5oligos_7nt_mkv5_m5	Zic1::Zic2	0.723	0.500	11	11	9	13	0.6923	0.8182	0.8182	D	2
+oligos_6nt_mkv4_m1	MA0747.1	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	SP8	0.748	0.498	13	12	10	15	0.6667	0.7692	0.8333	R	3
+oligos_7nt_mkv5_m4	MA1648.1	oligos_7nt_mkv5_m4oligos_7nt_mkv5_m4	TCF12(var.2)	0.769	0.494	12	11	9	14	0.6429	0.7500	0.8182	R	-2
+oligos_7nt_mkv5_m1	MA1564.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	SP9	0.787	0.492	14	12	10	16	0.6250	0.7143	0.8333	D	-2
+oligos_7nt_mkv5_m4	MA0522.3	oligos_7nt_mkv5_m4oligos_7nt_mkv5_m4	TCF3	0.763	0.491	12	11	9	14	0.6429	0.7500	0.8182	R	-2
+oligos_7nt_mkv5_m4	MA0830.2	oligos_7nt_mkv5_m4oligos_7nt_mkv5_m4	TCF4	0.731	0.488	12	13	10	15	0.6667	0.8333	0.7692	R	-3
+oligos_6nt_mkv4_m4	MA0139.1	oligos_6nt_mkv4_m4oligos_6nt_mkv4_m4	CTCF	0.842	0.488	11	19	11	19	0.5789	1.0000	0.5789	D	-2
+oligos_7nt_mkv5_m1	MA0740.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	KLF14	0.752	0.486	14	14	11	17	0.6471	0.7857	0.7857	D	-3
+oligos_6nt_mkv4_m1	MA0741.1	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	KLF16	0.810	0.486	13	11	9	15	0.6000	0.6923	0.8182	R	4
+oligos_7nt_mkv5_m4	MA1631.1	oligos_7nt_mkv5_m4oligos_7nt_mkv5_m4	ASCL1(var.2)	0.721	0.480	12	13	10	15	0.6667	0.8333	0.7692	R	-3
+oligos_7nt_mkv5_m1	MA0747.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	SP8	0.767	0.479	14	12	10	16	0.6250	0.7143	0.8333	D	-2
+oligos_7nt_mkv5_m1	MA0685.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	SP4	0.754	0.476	14	17	12	19	0.6316	0.8571	0.7059	D	-5
+oligos_7nt_mkv5_m3	MA1630.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	Znf281	0.832	0.476	11	11	8	14	0.5714	0.7273	0.7273	R	-3
+oligos_6nt_mkv4_m1	MA1513.1	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	KLF15	0.786	0.471	13	11	9	15	0.6000	0.6923	0.8182	R	4
+oligos_6nt_mkv4_m1	MA1578.1	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	VEZF1	0.733	0.471	13	10	9	14	0.6429	0.6923	0.9000	R	-1
+positions_7nt_m3	MA1102.2	positions_7nt_m3positions_7nt_m3	CTCFL	0.939	0.469	24	12	12	24	0.5000	0.5000	1.0000	D	2
+positions_7nt_m4	MA1102.2	positions_7nt_m4positions_7nt_m4	CTCFL	0.936	0.468	24	12	12	24	0.5000	0.5000	1.0000	R	8
+positions_6nt_m3	MA1102.2	positions_6nt_m3positions_6nt_m3	CTCFL	0.929	0.465	24	12	12	24	0.5000	0.5000	1.0000	R	12
+oligos_6nt_mkv4_m1	MA1512.1	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	KLF11	0.772	0.463	13	11	9	15	0.6000	0.6923	0.8182	R	4
+oligos_7nt_mkv5_m1	MA0741.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	KLF16	0.818	0.460	14	11	9	16	0.5625	0.6429	0.8182	D	-2
+positions_7nt_m5	MA1102.2	positions_7nt_m5positions_7nt_m5	CTCFL	0.920	0.460	24	12	12	24	0.5000	0.5000	1.0000	D	8
+positions_7nt_m1	MA1102.2	positions_7nt_m1positions_7nt_m1	CTCFL	0.917	0.459	24	12	12	24	0.5000	0.5000	1.0000	D	3
+oligos_7nt_mkv5_m3	MA1578.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	VEZF1	0.743	0.457	11	10	8	13	0.6154	0.7273	0.8000	D	3
+oligos_6nt_mkv4_m1	MA0746.2	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	SP3	0.730	0.456	13	13	10	16	0.6250	0.7692	0.7692	R	3
+oligos_7nt_mkv5_m4	MA0741.1	oligos_7nt_mkv5_m4oligos_7nt_mkv5_m4	KLF16	0.708	0.455	12	11	9	14	0.6429	0.7500	0.8182	R	3
+oligos_6nt_mkv4_m1	MA0516.2	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	SP2	0.777	0.450	13	17	11	19	0.5789	0.8462	0.6471	R	2
+oligos_7nt_mkv5_m1	MA1513.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	KLF15	0.799	0.450	14	11	9	16	0.5625	0.6429	0.8182	D	-2
+oligos_7nt_mkv5_m2	MA1564.1	oligos_7nt_mkv5_m2oligos_7nt_mkv5_m2	SP9	0.718	0.449	14	12	10	16	0.6250	0.7143	0.8333	R	4
+oligos_7nt_mkv5_m5	MA0597.1	oligos_7nt_mkv5_m5oligos_7nt_mkv5_m5	THAP1	0.832	0.448	11	9	7	13	0.5385	0.6364	0.7778	R	-2
+oligos_7nt_mkv5_m1	MA0746.2	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	SP3	0.760	0.447	14	13	10	17	0.5882	0.7143	0.7692	D	-3
+positions_6nt_m5	MA0139.1	positions_6nt_m5positions_6nt_m5	CTCF	0.855	0.445	19	19	13	25	0.5200	0.6842	0.6842	R	-6
+oligos_7nt_mkv5_m1	MA1512.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	KLF11	0.784	0.441	14	11	9	16	0.5625	0.6429	0.8182	D	-2
+oligos_6nt_mkv4_m4	MA1638.1	oligos_6nt_mkv4_m4oligos_6nt_mkv4_m4	HAND2	0.713	0.439	11	10	8	13	0.6154	0.7273	0.8000	D	3
+oligos_7nt_mkv5_m5	MA1521.1	oligos_7nt_mkv5_m5oligos_7nt_mkv5_m5	MAFA	0.702	0.439	11	15	10	16	0.6250	0.9091	0.6667	D	-5
+oligos_7nt_mkv5_m2	MA0747.1	oligos_7nt_mkv5_m2oligos_7nt_mkv5_m2	SP8	0.701	0.438	14	12	10	16	0.6250	0.7143	0.8333	R	4
+positions_6nt_m2	MA0139.1	positions_6nt_m2positions_6nt_m2	CTCF	0.874	0.437	20	19	13	26	0.5000	0.6500	0.6842	R	-6
+oligos_6nt_mkv4_m5	MA0006.1	oligos_6nt_mkv4_m5oligos_6nt_mkv4_m5	Ahr::Arnt	0.723	0.434	10	6	6	10	0.6000	0.6000	1.0000	D	4
+oligos_7nt_mkv5_m3	MA1627.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	Wt1	0.771	0.434	11	14	9	16	0.5625	0.8182	0.6429	D	-5
+oligos_7nt_mkv5_m3	MA0130.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	ZNF354C	0.792	0.432	11	6	6	11	0.5455	0.5455	1.0000	D	1
+oligos_7nt_mkv5_m1	MA1628.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	Zic1::Zic2	0.764	0.430	14	11	9	16	0.5625	0.6429	0.8182	R	5
+oligos_7nt_mkv5_m1	MA1629.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	Zic2	0.765	0.425	14	14	10	18	0.5556	0.7143	0.7143	R	4
+oligos_6nt_mkv4_m1	MA0079.4	oligos_6nt_mkv4_m1oligos_6nt_mkv4_m1	SP1	0.760	0.422	13	15	10	18	0.5556	0.7692	0.6667	R	3
+oligos_7nt_mkv5_m1	MA0516.2	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	SP2	0.767	0.422	14	17	11	20	0.5500	0.7857	0.6471	D	-6
+positions_6nt_m1	MA1102.2	positions_6nt_m1positions_6nt_m1	CTCFL	0.842	0.421	24	12	12	24	0.5000	0.5000	1.0000	D	8
+oligos_7nt_mkv5_m1	MA0163.1	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	PLAG1	0.752	0.418	14	14	10	18	0.5556	0.7143	0.7143	R	4
+oligos_7nt_mkv5_m1	MA0079.4	oligos_7nt_mkv5_m1oligos_7nt_mkv5_m1	SP1	0.785	0.413	14	15	10	19	0.5263	0.7143	0.6667	D	-5
+oligos_7nt_mkv5_m2	MA1512.1	oligos_7nt_mkv5_m2oligos_7nt_mkv5_m2	KLF11	0.734	0.413	14	11	9	16	0.5625	0.6429	0.8182	R	5
+oligos_7nt_mkv5_m3	MA0747.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	SP8	0.769	0.410	11	12	8	15	0.5333	0.7273	0.6667	D	-4
+oligos_6nt_mkv4_m4	MA0091.1	oligos_6nt_mkv4_m4oligos_6nt_mkv4_m4	TAL1::TCF3	0.766	0.409	11	12	8	15	0.5333	0.7273	0.6667	R	3
+oligos_7nt_mkv5_m2	MA1513.1	oligos_7nt_mkv5_m2oligos_7nt_mkv5_m2	KLF15	0.724	0.407	14	11	9	16	0.5625	0.6429	0.8182	R	5
+oligos_7nt_mkv5_m2	MA0741.1	oligos_7nt_mkv5_m2oligos_7nt_mkv5_m2	KLF16	0.720	0.405	14	11	9	16	0.5625	0.6429	0.8182	R	5
+positions_6nt_m5	MA0119.1	positions_6nt_m5positions_6nt_m5	NFIC::TLX1	0.701	0.401	19	14	12	21	0.5714	0.6316	0.8571	D	7
+oligos_7nt_mkv5_m3	MA0006.1	oligos_7nt_mkv5_m3oligos_7nt_mkv5_m3	Ahr::Arnt	0.733	0.400	11	6	6	11	0.5455	0.5455	1.0000	R	4
+; Host name	clust-rsat
+; Job started	2024-03-21.023923
+; Job done	2024-03-21.024028
+; Seconds	9.6
+;	user	9.6
+;	system	3.2
+;	cuser	46.01
+;	csystem	6.74
